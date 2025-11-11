@@ -1,0 +1,15 @@
+#Rodar como Administrador 
+Get-WmiObject -Class Win32_Product | Where-Object { $_.Name -like "Wazuh*" } | ForEach-Object { $_.Uninstall() }
+
+#Finalizar
+Get-Service | Where-Object { $_.Name -like "*wazuh*" } | Stop-Service -Force
+Remove-Item -Recurse -Force "C:\Program Files (x86)\ossec-agent" -ErrorAction SilentlyContinue
+
+#Verificação 1 (Serviço Inexistente - Não deve retornar nada)
+Get-Service | Where-Object { $_.Name -like "*wazuh*" }
+
+#Verificação 2 (Programa não listado - Não deve retornar nada)
+Get-WmiObject -Class Win32_Product | Where-Object { $_.Name -like "*Wazuh*" }
+
+#Verificação 3 (Pasta removida - deve retornar "False")
+Test-Path "C:\Program Files (x86)\ossec-agent"
