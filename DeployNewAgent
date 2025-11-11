@@ -1,0 +1,8 @@
+#IP do Servidor
+Adicionar IP do servidor do Wazuh 
+
+#Rodar os seguintes commandos para baixar e instalar o agent
+Invoke-WebRequest -Uri https://packages.wazuh.com/4.x/windows/wazuh-agent-4.14.0-1.msi -OutFile $env:tmp\wazuh-agent; msiexec.exe /i $env:tmp\wazuh-agent /q WAZUH_MANAGER='111.111.111.11' 
+
+#Iniciar o agent
+Net START Wazuh
