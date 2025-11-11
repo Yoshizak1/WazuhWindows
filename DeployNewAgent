@@ -6,3 +6,6 @@ Invoke-WebRequest -Uri https://packages.wazuh.com/4.x/windows/wazuh-agent-4.14.0
 
 #Iniciar o agent
 Net START Wazuh
+
+#Validar 
+Get-Service wazuh-agent
