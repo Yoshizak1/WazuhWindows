@@ -1,0 +1,17 @@
+#Atualizar índice e instalar dependência
+apt-get update
+apt-get install -y lsb-release
+
+#Baixar e instalar o pacote do agente (Ajuste o IP do manager se necessário)
+wget https://packages.wazuh.com/4.x/apt/pool/main/w/wazuh-agent/wazuh-agent_4.14.0-1_amd64.deb \
+  && WAZUH_MANAGER='192.255.253.11' WAZUH_AGENT_GROUP='default' dpkg -i ./wazuh-agent_4.14.0-1_amd64.deb
+
+#Habilitar e iniciar o serviço
+systemctl daemon-reload
+systemctl enable wazuh-agent
+systemctl start wazuh-agent
+
+#(Opcional) Verificação rápida
+systemctl status wazuh-agent --no-pager
+# ou
+tail -n 100 /var/ossec/logs/ossec.log
