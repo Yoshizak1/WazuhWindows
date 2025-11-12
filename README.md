@@ -1,6 +1,6 @@
 # Instalação do Wazuh Agent
 
-Este guia explica como instalar, configurar e validar a conexão do **Wazuh Agent** em sistemas Windows.
+Este guia explica como instalar, configurar e validar a conexão do **Wazuh Agent** em sistemas Windows e Linux.
 
 ---
 
